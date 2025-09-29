@@ -1,0 +1,38 @@
+name: tweenn_pdf_splitter
+
+services:
+    code-builder:
+        build: ./
+        image: node:22-alpine
+        command: [ash, -c, "cd /usr/app/ && npm install && npm run dev"]
+        environment:
+            - TZ=America/Sao_Paulo
+        volumes:
+            - ./__containers__/builder/node_modules:/usr/app/node_modules/
+            - ./__containers__/builder/package-lock.json:/usr/app/package-lock.json
+            - ./dist:/usr/app/dist/
+            - ./src:/usr/app/src/
+            - ./.env:/usr/app/.env
+            - ./package.json:/usr/app/package.json
+            - ./tsconfig.json:/usr/app/tsconfig.json
+            - ./tsconfig.node.json:/usr/app/tsconfig.node.json
+            - ./vite.config.ts:/usr/app/vite.config.ts
+  # =======================================================================
+    code-server:
+      image: nginx:stable-alpine
+      environment:
+          - TZ=America/Sao_Paulo
+      ports:
+          - "5577:8080"
+      networks:
+        - internal
+      volumes:
+          - ./__containers__/server/conf:/etc/nginx
+          - ./dist/:/usr/share/nginx/html
+      depends_on:
+          - code-builder
+
+networks:
+  internal:
+    driver: bridge
+    name: tweenn_pdf_splitter

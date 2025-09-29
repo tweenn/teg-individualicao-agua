@@ -1,0 +1,42 @@
+{
+	"name": "pdf-splitter",
+	"version": "1.0.0",
+	"description": "",
+	"main": "index.js",
+	"type": "module",
+	"scripts": {
+		"dev": "tsc && vite build --watch",
+		"preview": "vite preview --port 5577",
+		"build": "tsc && vite build --emptyOutDir",
+		"build:github": "export viteEnv=github && tsc && vite build --emptyOutDir",
+		"deploy:ghpages": "push-dir --dir=dist --branch=gh-pages --verbose --cleanup",
+		"publish:ghpages": "pnpm build:github && pnpm deploy:ghpages",
+		"test": "echo \"Error: no test specified\" && exit 1"
+	},
+	"keywords": [],
+	"author": "Felipe Zuntini <felipezuntini@hotmail.com>",
+	"license": "MIT",
+	"dependencies": {
+		"@tailwindcss/vite": "4.1.13",
+		"@uppy/core": "5.0.2",
+		"@uppy/react": "5.0.3",
+		"jszip": "3.10.1",
+		"pdf-lib": "1.17.1",
+		"preact": "10.27.2",
+		"tailwindcss": "4.1.13"
+	},
+	"devDependencies": {
+		"@preact/preset-vite": "2.10.2",
+		"@types/node": "^24.5.2",
+		"push-dir": "0.4.1",
+		"typescript": "5.9.2",
+		"vite": "link:@types/tailwindcss/vite",
+		"vite-plugin-html-minifier": "1.0.5"
+	},
+	"alias": {
+		"react": "preact/compat",
+		"react-dom": "preact/compat",
+		"react-dom/test-utils": "preact/test-utils",
+		"react/jsx-runtime": "preact/jsx-runtime"
+	}
+}
