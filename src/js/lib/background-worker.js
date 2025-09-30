@@ -13,7 +13,6 @@ function _GSPS2PDF(
 	xhr.open("GET", dataStruct.psDataURL);
 	xhr.responseType = "arraybuffer";
 	xhr.onload = function () {
-		console.log('onload')
 		// release the URL
 		self.URL.revokeObjectURL(dataStruct.psDataURL);
 		//set up EMScripten environment
@@ -61,13 +60,9 @@ function _GSPS2PDF(
 }
 
 self.addEventListener('message', function({data:e}) {
-	console.log("message", e);
 	// e.data contains the message sent to the worker.
 	if (e.target !== 'wasm'){
 		return;
 	}
-	console.log('Message received from main script', e.data);
 	_GSPS2PDF(e.data, ({pdfDataURL}) => self.postMessage(pdfDataURL));
 });
-
-console.log("Worker ready");

@@ -2,6 +2,7 @@
 import { defineConfig } from 'vite';
 import preact from '@preact/preset-vite';
 import htmlMinifier from 'vite-plugin-html-minifier';
+import { viteStaticCopy } from 'vite-plugin-static-copy';
 import tailwindcss from '@tailwindcss/vite';
 
 const minify = {
@@ -24,6 +25,14 @@ const base = (process?.env?.viteEnv || 'production') === 'github'
 
 export default defineConfig({
 	plugins: [
+		viteStaticCopy({
+			targets: [
+				{
+					src: 'bin/gs-worker.wasm',
+					dest: 'assets',
+				},
+			]
+		}),
 		preact(),
 		tailwindcss(),
 		htmlMinifier({

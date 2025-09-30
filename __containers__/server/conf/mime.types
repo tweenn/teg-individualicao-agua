@@ -4,4 +4,5 @@ types {
 	text/html html htm;
 	text/css css;
 	image/svg+xml svg svgz;
+	application/wasm wasm;
 }
