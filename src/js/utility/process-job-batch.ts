@@ -3,6 +3,8 @@ import { PDFDocument } from 'pdf-lib';
 import copyPdfPage from './copy-pdf-page.js';
 import compressPdf from './compress-pdf.js';
 
+import pdfNameProcessor from './pdf-name-processor.js';
+
 export default (
 	jobIndex: number,
 	numberOfJobs: number,
@@ -19,7 +21,6 @@ export default (
 		.fill(true, 0, jobsRunning)
 		.map(async (_value, index) => {
 			const pdfIndex = jobIndex * NUMBER_OF_CONCURRENT_FILES + index;
-			const pdfPage = pdfIndex + 1;
 
 			const pdfBytes = await copyPdfPage(
 				pdfDoc,
@@ -28,8 +29,10 @@ export default (
 
 			const compressedPdfBytes = await compressPdf(pdfBytes);
 
+			const name = pdfNameProcessor(pdfIndex);
+
 			return {
-				name: `Page ${pdfPage}.pdf`,
+				name,
 				bin: compressedPdfBytes
 			}
 		});

@@ -5,6 +5,6 @@ export default (
 	const url = URL.createObjectURL(blob);
 	const a = document.createElement('a');
 	a.href = url;
-	a.download = `compressed-pages.zip`;
+	a.download = `paginas-comprimidas.zip`;
 	a.click();
 };

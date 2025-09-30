@@ -84,10 +84,11 @@ function App() {
 		<UppyContextProvider uppy={uppy}>
 			<main className="p-5 max-w-xl mx-auto">
 				<h1 className="text-4xl font-bold my-4">
-					PDF Splitter
+					Teg. - Individualição de Água
 				</h1>
 
 				<article>
+
 					<div style={
 						`display: ${pdf === false ? 'inherit' : 'none'}`
 					}>
@@ -98,7 +99,7 @@ function App() {
 				</article>
 				{ totalPdfPages > 0 && (
 					<article>
-						<p>Processing Page</p>
+						<p>Página sendo processada</p>
 						<p>{currentPdfPageBeingProcessed} / {totalPdfPages}</p>
 					</article>
 				)}

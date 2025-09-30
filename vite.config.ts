@@ -20,7 +20,7 @@ const minify = {
 };
 
 const base = (process?.env?.viteEnv || 'production') === 'github'
-	? 'pages.github.io/tweenn/pdf-splitter'
+	? 'teg-individualicao-agua'
 	: '';
 
 export default defineConfig({

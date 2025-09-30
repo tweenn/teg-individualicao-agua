@@ -1,5 +1,5 @@
 {
-	"name": "pdf-splitter",
+	"name": "teg-individualicao-agua",
 	"version": "1.0.0",
 	"description": "",
 	"main": "index.js",
@@ -19,7 +19,7 @@
 	"dependencies": {
 		"@tailwindcss/vite": "4.1.13",
 		"@uppy/core": "5.0.2",
-		"@uppy/react": "5.0.3",
+		"@uppy/react": "5.1.0",
 		"jszip": "3.10.1",
 		"pdf-lib": "1.17.1",
 		"preact": "10.27.2",
@@ -27,7 +27,7 @@
 	},
 	"devDependencies": {
 		"@preact/preset-vite": "2.10.2",
-		"@types/node": "^24.5.2",
+		"@types/node": "24.6.0",
 		"push-dir": "0.4.1",
 		"typescript": "5.9.2",
 		"vite": "link:@types/tailwindcss/vite",
